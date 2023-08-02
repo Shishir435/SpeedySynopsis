@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "SpeedySynopsis",
-  "description": "Empower users to effortlessly extract summaries from Udemy video courses.",
+  "description": "Empower users to effortlessly extract summaries from Udemy & Coursera video courses.",
   "version": "0.0.0.1",
   "icons": {
     "16": "images/icon-16.png",

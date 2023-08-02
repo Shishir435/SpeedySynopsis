@@ -50,8 +50,9 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
     // When the closeButton is clicked, set nextState to 'OFF'
     const tabId = sender.tab.id;
     chrome.action.setBadgeText({ tabId, text: 'OFF' });
-    
   }
   
 });
+
+
 
