@@ -23,7 +23,8 @@
   "permissions": [
     "scripting",
     "activeTab",
-    "clipboardWrite"
+    "clipboardWrite",
+    "storage"
   ],
   "commands": {
     "_execute_action": {
