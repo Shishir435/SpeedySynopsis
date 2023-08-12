@@ -509,7 +509,3 @@ function getAndInjectSynopsis(synopsisApiKey) {
 
 }
 
-
-
-
-
