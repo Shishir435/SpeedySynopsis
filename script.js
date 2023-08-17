@@ -1,13 +1,10 @@
-
-// document.querySelector('[data-purpose="transcript-toggle"]').onclick   // transcript btn
-console.log('SpeedySynopsis is working');
-
+console.log('Lecture Summary is working');
 
 var divElement = document.createElement("div");
 divElement.innerHTML = `
       <div class="popup">
            <div class="popup-top">
-             <h2>SpeedySynopsis</h2>
+             <h2>Lecture Summary</h2>
               <div class="action">
                 <button class="popup-reload hide btn" title="reload extension">&#8634;</button>
                 <button class="popup-copy hide btn" title="copy to clipboard">&#128203;</button>
@@ -22,12 +19,12 @@ divElement.innerHTML = `
              <p class="popup-video-title"></p>
              <div id="summary" class="summary">
              <p class="summary-paragraph center">  
-             Unlock curated summaries of Udemy and Coursera Video Tutorials. Elevate your learning with concise insights. <br> <span style="display: block; text-align:center;"> Start exploring now.</span>
+             Discover handpicked summaries of Udemy and Coursera video tutorials. Enhance your learning with clear and concise insights.<br> <span style="display: block; text-align:center;"> Start exploring now.</span>
              </p>
              </div>
              <div class="popup-option-div"></div>
              <div class="popup-generate">
-                 <button class="popup-generate-btn">Generate Synopsis</button>
+                 <button class="popup-generate-btn">Generate Summary</button>
              </div>
             </div>
             <div class="popup-footer">
@@ -176,14 +173,12 @@ chrome.storage.local.get(['ghostApiKey'], function (result) {
   const apiKey = result.ghostApiKey;
   //  apiKey=undefined;
   if (apiKey !== "" && apiKey !== undefined) {
-    // API key is present, proceed with functionality
-    // performFunctionality(apiKey);
     getAndInjectSynopsis(apiKey);
   } else {
     var optionDiv = document.createElement('div');
     optionDiv.innerHTML = `
         <div class="popup-option">
-        <p>Welcome to the SpeedySynopsis Chrome Extension!</p>
+        <p>Welcome to the Lecture Summary Chrome Extension!</p>
     <p>Follow these simple steps to get started:</p>
     <ol style="text-align: left;">
         <li>Register on EdenAI by clicking <a href="https://app.edenai.run/admin/account/settings" alt="EdenAI register link" target="_blank">here</a></li>
@@ -202,14 +197,12 @@ chrome.storage.local.get(['ghostApiKey'], function (result) {
     // summaryParagraph.textContent = "Kindly create an account on the EdenAI website and  retrieve the API key. Once you have the API key, enter it in the provided input box.";
     summaryParagraph.textContent = "";
     generateBtn.classList.add('hide');
-    // API key is not present, handle accordingly (maybe show an error message)
     console.log("API key not found. Please enter your API key.");
     const apiKeyInput = document.getElementById('apiKeyInput');
     const submitApiKey = document.getElementById('submitApiKey');
     submitApiKey.addEventListener('click', function () {
       const synopsisApiKey = apiKeyInput.value;
       if (synopsisApiKey) {
-        // Save the API key to local storage
         chrome.storage.local.set({ ghostApiKey: synopsisApiKey }, function () {
           optionPopup.classList.add('hide');
         });
@@ -256,7 +249,6 @@ function getTheTranscript() {
   const Udemy = 'https://www.udemy.com/course/';
   const Coursera = 'https://www.coursera.org/learn/'
   let currentTabUrl = window.location.href;
-  // console.log(window.location.href);
   const summaryParagraph = document.querySelector('.summary-paragraph');
   if (currentTabUrl.startsWith(Udemy)) {
     let TranscriptPanel = document.querySelector('[class^="transcript--transcript-panel"]');
@@ -300,7 +292,6 @@ getTheTranscript();
 function copyToClipboard() {
   const summaryParagraph = document.querySelector('.summary-paragraph');
   const copyBtn = document.querySelector('.popup-copy');
-  // const copiedBtn = document.querySelector('.popup-copied');
   copyBtn.classList.remove('hide');
   copyBtn.addEventListener('click', function () {
     const videoTitle = document.querySelector('.popup-video-title');
@@ -333,8 +324,6 @@ function copyToClipboard() {
 function downloadTxt() {
   const summaryParagraph = document.querySelector('.summary-paragraph');
   const saveBtn = document.querySelector('.popup-save');
-  // const copiedBtn = document.querySelector('.popup-copied');
-
   saveBtn.classList.remove('hide');
   saveBtn.addEventListener('click', function () {
     const videoTitle = document.querySelector('.popup-video-title');
@@ -378,17 +367,14 @@ function downloadTxt() {
   });
 }
 
-// console.log(getTheTranscript().length);
 
 function getAndInjectSynopsis(synopsisApiKey) {
 
   if (getTheTranscript().length !== 0) {
     let transcript = getTheTranscript()[0];
-    // console.log(transcript);
+
     let PromptText = `Summarize the provided \n ${transcript} \n in bullet point format, ensuring that the summary is approximately 30-40% of the original text. Please use concise and meaningful bullet points to capture the key points and main ideas.
     you can divide each points by '\n-' `
-
-    // console.log("Prompt text", PromptText);
     let options = {
       method: "POST",
       headers: {
@@ -436,7 +422,6 @@ function getAndInjectSynopsis(synopsisApiKey) {
           if (response.status === 401 || response.status === 403) {
             const summaryParagraph = document.querySelector('.summary-paragraph');
             summaryParagraph.textContent = "We apologize, but it seems there's an issue with your API key. Please provide your API key and ensure that it is correctly entered in a single line.";
-
             var optionDiv = document.createElement('div');
             optionDiv.innerHTML = `
           <div class="popup-option">
@@ -455,19 +440,15 @@ function getAndInjectSynopsis(synopsisApiKey) {
             optionPopup.appendChild(optionDiv);
             const generateBtn = document.querySelector('.popup-generate-btn');
             generateBtn.classList.add('hide');
-            // API key is not present, handle accordingly (maybe show an error message)
             console.log("API key not found. Please enter your API key.");
             const apiKeyInput = document.getElementById('apiKeyInput');
             const submitApiKey = document.getElementById('submitApiKey');
             submitApiKey.addEventListener('click', function () {
               const synopsisApiKey = apiKeyInput.value;
               if (synopsisApiKey) {
-                // Save the API key to local storage
                 chrome.storage.local.set({ ghostApiKey: synopsisApiKey }, function () {
                   optionPopup.classList.add('hide');
                 });
-                // const popupContent= document.querySelector('.popup-content');
-                // popupContent.textContent="API key successfully saved. Close the extension, then reopen it by clicking once more.";
                 summaryParagraph.textContent = "API key successfully saved. Close the extension, then reopen it by clicking once more";
               }
             });
@@ -478,9 +459,6 @@ function getAndInjectSynopsis(synopsisApiKey) {
             generateBtn.classList.add('hide');
             throw new Error(`Oops! Something went wrong while fetching the summary. Please refresh the page and try again. Error Code: ${response.status} \n `);
           }
-
-
-
           return response.json();
         })
         .then((data) => {
@@ -492,15 +470,11 @@ function getAndInjectSynopsis(synopsisApiKey) {
           let title = getTheTranscript();
           const videoTitle = document.querySelector('.popup-video-title');
           videoTitle.textContent = title[1];
-          // const summaryParagraph= document.querySelector('.summary-paragraph');
-          // summaryParagraph.textContent=res;
           generateBtn.classList.add('hide');
           copyToClipboard();
           downloadTxt();
         })
         .catch((error) => {
-          // const summaryParagraph = document.querySelector('.summary-paragraph');
-          // summaryParagraph.textContent = `\n ${error}`
           console.error(error);
         });
 

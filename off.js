@@ -1,3 +1,2 @@
-
-
-console.log('off js');
+document.body.removeChild(divElement);
+console.log('LEcture Summary Closed');
