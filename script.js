@@ -1,41 +1,47 @@
+'use strict'
+
 console.log('Lecture Summary is working');
+// alert(" Im alive guys")
 
 var divElement = document.createElement("div");
+
 divElement.innerHTML = `
-      <div class="popup">
-           <div class="popup-top">
-             <h2>Lecture Summary</h2>
-              <div class="action">
-                <button class="popup-reload hide btn" title="reload extension">&#8634;</button>
-                <button class="popup-copy hide btn" title="copy to clipboard">&#128203;</button>
-                <button class="popup-save hide btn" title="download text file">&#128190;</button>
-                <button class="popup-copied hide btn" title="copied">&#10003;</button>
-                <button class="popup-close btn" title="close extension">&#10006;</button>
-              </div>
-           </div>
-           <div class="popup-content">
-             <div class="popup-error"></div>
-             <div class="popup-instruction"></div>
-             <p class="popup-video-title"></p>
-             <div id="summary" class="summary">
-             <p class="summary-paragraph center">  
-             Discover handpicked summaries of Udemy and Coursera video tutorials. Enhance your learning with clear and concise insights.<br> <span style="display: block; text-align:center;"> Start exploring now.</span>
-             </p>
-             </div>
-             <div class="popup-option-div"></div>
-             <div class="popup-generate">
-                 <button class="popup-generate-btn">Generate Summary</button>
-             </div>
-            </div>
-            <div class="popup-footer">
-             <div>
-                <a href="https://shishirchaurasiya.site/" class="shishir" alt="Shishir's Website link" target="_blank"> Developed by Shishir</a>
-             </div>
-              <div>
-                <a href="mailto:shishirchaurasiya435@gmail.com" alt="contact me through mail" target="_blank">&#9993;</a>
-              </div>
-            </div>
-      </div>
+<div class="popup">
+<div class="popup-top">
+    <h2>Lecture Summary</h2>
+    <div class="action">
+        <button class="popup-reload hide btn" title="reload extension">&#8634;</button>
+        <button class="popup-copy hide btn" title="copy to clipboard">&#128203;</button>
+        <button class="popup-save hide btn" title="download text file">&#128190;</button>
+        <button class="popup-copied hide btn" title="copied">&#10003;</button>
+        <button class="popup-close btn" title="close extension">&#10006;</button>
+    </div>
+</div>
+<div class="popup-content">
+    <div class="popup-error"></div>
+    <div class="popup-instruction"></div>
+    <h3 class="popup-video-title"></h3>
+    <div id="summary" class="summary">
+        <p class="summary-paragraph center">
+            Explore curated summaries of Udemy, Coursera and Youtube video tutorials that offer concise insights to enhance your learning. These summaries are designed to complement videos with transcripts, durations under 28 minutes, and transcripts containing fewer than 4000 words. <span style="display: block; text-align:center;">Start your exploration today.</span> 
+        </p>
+    </div>
+    <div class="popup-option-div"></div>
+    <div class="popup-generate">
+        <button class="popup-generate-btn">Generate Summary</button>
+    </div>
+</div>
+<div class="popup-footer">
+    <div>
+        <a href="https://lecture-summary.vercel.app/" class="shishir" alt="Shishir's Website link"
+            target="_blank">Need Help?</a>
+    </div>
+    <div>
+        <a href="mailto:shishirchaurasiya435@gmail.com" alt="contact me through mail"
+            target="_blank">&#9993;</a>
+    </div>
+</div>
+</div>
   `;
 
 
@@ -43,130 +49,144 @@ document.body.appendChild(divElement);
 
 var styleElement = document.createElement("style");
 styleElement.innerHTML = `
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&display=swap');
-      .popup {
-          position: absolute;
-          top: 50px;
-          right: 20px;
-          z-index: 200;
-          text-align: center;
-          width: 300px;
-          border-radius: 10px;
-          font-family: 'Rubik', sans-serif;
-      }
-      .popup > *{
-        padding: 5px;
-      }
-      .popup-top,
-      .popup-footer{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        // background-color: #b89404;
-        background-color: #010101;
-        padding: 2px 8px;
-        
-      }
-      .popup-top{
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-      }
-      .popup-top h2{
-        font-weight: 400;
-        font-size: 16px;
-      }
-      .popup-content::-webkit-scrollbar{
-        width: 5px;
-        height: 13px;
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&display=swap");
+.popup {
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  z-index: 2147483647;
+  text-align: center;
+  width: 300px;
+  border-radius: 10px;
+  font-family: "Rubik", sans-serif;
+}
+.popup > * {
+  padding: 5px;
+}
+.popup-top,
+.popup-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #010101;
+  padding: 2px 8px;
+}
+.popup-top {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.popup-top h2 {
+  font-weight: 400;
+  font-size: 16px;
+}
+.popup-content::-webkit-scrollbar {
+  width: 5px;
+  height: 13px;
+}
+.popup-content {
+  padding: 8px;
+  max-height: 400px;
+  overflow-y: scroll;
+}
+.summary-paragraph {
+  text-align: left;
+  margin: 20px 0;
+  font-size: 13px;
+}
+.hide {
+  display: none;
+}
+.btn {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  color: currentColor;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 15px;
+}
+.popup-generate-btn,
+.popup-option-btn {
+  cursor: pointer;
+  margin: 20px;
+  border-radius: 999px;
+  padding: 5px 10px;
+  border: 2px solid currentColor;
+  color: currentColor;
+  background-color: transparent;
+  transition: transform 0.2s ease-in-out;
+}
+.popup-generate-btn:hover,
+.popup-option-btn:hover {
+  transform: translateY(-3px);
+  transform: scale(1.1);
+}
 
-      }
-      .popup-content{
-        padding: 8px;
-        max-height: 400px;
-        overflow-y: scroll;
-      }
-      .summary-paragraph{
-        text-align: left;
-        margin: 20px 0;
-        font-size: 13px;
-      }
-      .hide{
-         display: none;
-      }
-      .btn{
-        height: 30px;
-        width: 30px;
-        cursor: pointer;
-        color: currentColor;
-        background-color: transparent;
-        border: none;
-        outline: none;
-        font-size: 15px;
-      }
-      .popup-generate-btn,
-      .popup-option-btn
-      {
-        cursor: pointer;
-        margin: 20px;
-        border-radius: 999px;
-        padding: 5px 10px;
-        border: 2px solid currentColor;
-        color: currentColor;
-        background-color: transparent;
-        transition: transform 0.2s ease-in-out;
-      }
-      .popup-generate-btn:hover,
-      .popup-option-btn:hover{
-       transform: translateY(-3px);
-       transform: scale(1.1);
-      }
+.popup-reload {
+  font-size: 20px;
+}
+.action {
+  display: flex;
+  align-items: center;
+  transform: translateX(5px);
+}
+.action:not(:last-child) {
+  gap: 5px;
+}
+.popup-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 4px 8px;
+}
+.popup-footer a,
+.popup-footer a:visited {
+  color: currentColor;
+  text-decoration: none;
+}
+.popup-footer a:hover {
+  color: gray;
+}
+.shishir {
+  font-size: 13px;
+}
+.center {
+  text-align: center;
+}
+.popup-bullet-point-li {
+  margin-left: 20px;
+}
 
-      .popup-reload{
-        font-size: 20px;
-      }
-      .action{
-        display: flex;
-        align-items: center;
-        transform: translateX(5px);
-      }
-      .action:not(:last-child){
-        gap: 5px;
-      }
-      .popup-footer{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
-        padding: 4px 8px;
-      }
-      .popup-footer a, 
-      .popup-footer a:visited{
-        color: currentColor;
-        text-decoration: none;
-      }
-      .popup-footer a:hover{
-        color: gray;
-      }
-      .shishir{
-        font-size: 13px;
-      }
-      .center{
-        text-align: center;
-      }
-      .popup-bullet-point{
-        transform: translateX(-8px);
-      }
-      .popup-option{
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-      }
-      .popup-option-input{
-        padding: 5px 10px;
-        margin: 5px 20px;
-        border-radius: 10px;
-      }
+.popup-bullet-point > * {
+  list-style-type: disc !important;
+}
+.popup-option {
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.popup-option ol li{
+  font-size: 14px;
+  margin: 10px 20px;
+}
+.popup-option ol li a{
+  color: black;
+  border: 1px solid green;
+  padding: 2px 4px;
+  margin: 2px;
+  border-radius: 99px;
+  text-decoration: none;
+  background-color: white;
+}
+.popup-option-input {
+  padding: 5px 10px;
+  margin: 5px 20px;
+  border-radius: 10px;
+}
   `;
 
 chrome.storage.local.get(['ghostApiKey'], function (result) {
@@ -175,38 +195,54 @@ chrome.storage.local.get(['ghostApiKey'], function (result) {
   if (apiKey !== "" && apiKey !== undefined) {
     getAndInjectSynopsis(apiKey);
   } else {
-    var optionDiv = document.createElement('div');
+    const summaryParagraph = document.querySelector('.summary-paragraph');
+    const generateBtn = document.querySelector('.popup-generate-btn');
+    summaryParagraph.textContent = "";
+    // console.log('summaryParagraph.textContent: ', summaryParagraph.textContent);
+    generateBtn.classList.add('hide');
+    const optionDiv = document.querySelector('.summary');
     optionDiv.innerHTML = `
-        <div class="popup-option">
-        <p>Welcome to the Lecture Summary Chrome Extension!</p>
+  <div class="popup-option">
+    <h3>Welcome to the Lecture Summary Chrome Extension!</h3>
     <p>Follow these simple steps to get started:</p>
     <ol style="text-align: left;">
-        <li>Register on EdenAI by clicking <a href="https://app.edenai.run/admin/account/settings" alt="EdenAI register link" target="_blank">here</a></li>
-        <li>Obtain your Eden AI API Key by following the detailed steps provided in <a href="https://shishirchaurasiya.hashnode.dev/easy-steps-to-sign-up-on-eden-ai-and-access-your-api-key" target="_blank">this article</a></li>
-        <li>If you run into any challenges, check out our detailed video guide on YouTube: <a href="https://www.youtube.com/watch?v=GXCeArGY6TI&ab_channel=Shishir" target="_blank">Watch the Guide</a></li>
+        <li class="popup-bullet-point-li">
+            Register on EdenAI by clicking 
+            <a href="https://app.edenai.run/admin/account/settings" alt="EdenAI register link"
+                target="_blank">Here
+            </a>
+        </li>
+        <li class="popup-bullet-point-li">
+            Obtain your Eden AI API Key by following the detailed steps provided in 
+            <a href="https://shishirchaurasiya.hashnode.dev/easy-steps-to-sign-up-on-eden-ai-and-access-your-api-key"
+                target="_blank">This Article
+            </a>
+        </li>
+        <li class="popup-bullet-point-li">
+            If you run into any challenges, check out our detailed video guide on YouTube: 
+            <a href="https://www.youtube.com/watch?v=GXCeArGY6TI&ab_channel=Shishir" target="_blank">
+            Watch The Guide
+            </a>
+        </li>
     </ol>
     <p>Once you have your API key, enter it below:</p>
     <input type="text" id="apiKeyInput" class="popup-option-input" placeholder="Paste your API key here" autofocus>
     <button id="submitApiKey" class="popup-option-btn">Submit</button>
-        </div>
-        `
-    const optionPopup = document.querySelector('.popup-option-div');
-    optionPopup.appendChild(optionDiv);
-    const summaryParagraph = document.querySelector('.summary-paragraph');
-    const generateBtn = document.querySelector('.popup-generate-btn');
-    // summaryParagraph.textContent = "Kindly create an account on the EdenAI website and  retrieve the API key. Once you have the API key, enter it in the provided input box.";
-    summaryParagraph.textContent = "";
-    generateBtn.classList.add('hide');
+  </div>
+`
     console.log("API key not found. Please enter your API key.");
     const apiKeyInput = document.getElementById('apiKeyInput');
     const submitApiKey = document.getElementById('submitApiKey');
     submitApiKey.addEventListener('click', function () {
+      // alert("got clicked")
+      const message=document.querySelector('.popup-instruction');
+      message.textContent = "API key successfully saved. Close the extension, then reopen it by clicking once more."
       const synopsisApiKey = apiKeyInput.value;
       if (synopsisApiKey) {
         chrome.storage.local.set({ ghostApiKey: synopsisApiKey }, function () {
-          optionPopup.classList.add('hide');
+          // alert("Successfully saved API Key")
+          optionDiv.classList.add('hide');
         });
-        summaryParagraph.textContent = "API key successfully saved. Close the extension, then reopen it by clicking once more.";
       }
     });
   }
@@ -234,7 +270,6 @@ function userPreference() {
 userPreference();
 
 document.head.appendChild(styleElement);
-
 function closeButton() {
   let closeButton = document.querySelector('.popup-close');
   closeButton.addEventListener("click", function () {
@@ -245,9 +280,35 @@ function closeButton() {
 
 closeButton();
 
+// function countWords(text) {
+//   const words = text.split(/\s+/);
+//   const wordCount = words.length;
+//   // Do something with wordCount
+// }
+function convertDurationToMinutes(durationText) {
+  const timeParts = durationText.split(':');
+  let numericDuration = 0;
+  for (let i = 0; i < timeParts.length; i++) {
+    numericDuration += parseInt(timeParts[i]) * Math.pow(60, timeParts.length - 1 - i);
+  }
+  const durationInMinutes = numericDuration / 60;
+  return durationInMinutes;
+}
+
+function isUnderWordLimit(text, limit) {
+  const words = text.split(/\s+/);
+  const wordCount = words.length;
+  return wordCount <= limit;
+}
+
+function isUnderVideoDurationLimit(duration, limit) {
+  let durationNum = convertDurationToMinutes(duration);
+  return durationNum <= limit;
+}
 function getTheTranscript() {
   const Udemy = 'https://www.udemy.com/course/';
-  const Coursera = 'https://www.coursera.org/learn/'
+  const Coursera = 'https://www.coursera.org/learn/';
+  const Youtube = 'https://www.youtube.com/watch';
   let currentTabUrl = window.location.href;
   const summaryParagraph = document.querySelector('.summary-paragraph');
   if (currentTabUrl.startsWith(Udemy)) {
@@ -268,7 +329,8 @@ function getTheTranscript() {
     }
     let transcript = TranscriptPanel.innerText.replace(/\n/g, '');
     return [transcript, videoTitle];
-  } else if (currentTabUrl.startsWith(Coursera)) {
+  }
+  else if (currentTabUrl.startsWith(Coursera)) {
     let Transcript = Array.from(document.querySelectorAll('.rc-Phrase')).map(phrase => phrase.textContent).join(' ');
     let videoTitle = document.querySelector('.video-name').textContent;
     if (Transcript === '') {
@@ -282,12 +344,48 @@ function getTheTranscript() {
       generateBtn.classList.add('hide');
       return undefined;
     }
-
     return [Transcript, videoTitle];
+  }
+  else if (currentTabUrl.startsWith(Youtube)) {
+    let Transcript = Array.from(document.querySelectorAll('.segment-text')).map(element => element.textContent).join(' ');
+    console.log('Transcript: ', Transcript);
+    let videoTitle = document.querySelector('h1.style-scope.ytd-watch-metadata').textContent.trim();
+    let duration = document.querySelector('.ytp-time-duration').textContent;
+    const generateBtn = document.querySelector('.popup-generate-btn');
+    const reloadBtn = document.querySelector('.popup-reload');
+    if (Transcript === '') {
+      reloadBtn.classList.remove('hide');
+      reloadBtn.addEventListener('click', () => {
+        document.location.reload();
+      })
+      summaryParagraph.textContent = `Kindly click the transcript button and give it another go.`;
+      generateBtn.classList.add('hide');
+      return undefined;
+    }
+    // let videoData={
+    //   title: videoTitle,
+    //   duration: duration,
+    //   transcript: Transcript,
+    //   words: Transcript.split(/\s+/),
+    //   wordsWithFilter: Transcript.split(/\s+/).filter(word => word !== ''),
+    // }
+    const durationChecker = isUnderVideoDurationLimit(duration, 28);
+    const wordLengthChecker = isUnderWordLimit(Transcript, 4000)
+    if (durationChecker && wordLengthChecker) {
+      return [Transcript, videoTitle];
+    } else {
+      if (!durationChecker) {
+         generateBtn.classList.add('hide');
+        summaryParagraph.textContent = `We're sorry, but we currently cannot process videos longer than 28 minutes.`;
+      } else {
+         generateBtn.classList.add('hide');
+        summaryParagraph.textContent = `We apologize, but it seems that this video's transcript contains more than 4000 words. Unfortunately, we are unable to process transcripts longer than 4000 words at the moment.`;
+      }
+      return [];
+    }
   }
 
 }
-getTheTranscript();
 
 function copyToClipboard() {
   const summaryParagraph = document.querySelector('.summary-paragraph');
@@ -369,12 +467,11 @@ function downloadTxt() {
 
 
 function getAndInjectSynopsis(synopsisApiKey) {
-
+  //  you can divide each points by '\n-'
   if (getTheTranscript().length !== 0) {
     let transcript = getTheTranscript()[0];
-
     let PromptText = `Summarize the provided \n ${transcript} \n in bullet point format, ensuring that the summary is approximately 30-40% of the original text. Please use concise and meaningful bullet points to capture the key points and main ideas.
-    you can divide each points by '\n-' `
+   `
     let options = {
       method: "POST",
       headers: {
@@ -395,7 +492,7 @@ function getAndInjectSynopsis(synopsisApiKey) {
         const firstColonIndex = line.indexOf(':');
         const lineWithoutFirstColon = firstColonIndex !== -1 ? line.slice(firstColonIndex + 1) : line;
         const trimmedLine = lineWithoutFirstColon.trim();
-        return trimmedLine.length > 0 ? `<li>${trimmedLine}</li>` : '';
+        return trimmedLine.length > 0 ? `<li class="popup-bullet-point-li" >${trimmedLine}</li>` : '';
       });
       const bulletPointsString = `<ul class="popup-bullet-point">${bulletPoints.join('')}</ul>`;
       return bulletPointsString;
@@ -414,27 +511,42 @@ function getAndInjectSynopsis(synopsisApiKey) {
     const generateBtn = document.querySelector('.popup-generate-btn');
     generateBtn.addEventListener('click', function () {
       generateBtn.textContent = "Generating Synopsis...";
+      const summaryParagraph = document.querySelector('.summary-paragraph');
       fetch("https://api.edenai.run/v2/text/summarize", options)
         .then((response) => {
           console.log("inside fetch");
 
           console.log(response);
           if (response.status === 401 || response.status === 403) {
-            const summaryParagraph = document.querySelector('.summary-paragraph');
             summaryParagraph.textContent = "We apologize, but it seems there's an issue with your API key. Please provide your API key and ensure that it is correctly entered in a single line.";
-            var optionDiv = document.createElement('div');
+            const optionDiv = document.createElement('div');
             optionDiv.innerHTML = `
-          <div class="popup-option">
-          <p>Follow these simple steps to get started:</p>
-         <ol>
-        <li>Register on EdenAI by clicking <a href="https://app.edenai.run/admin/account/settings" alt="EdenAI register link" target="_blank">here</a></li>
-        <li>Obtain your Eden AI API Key by following the detailed steps provided in <a href="https://shishirchaurasiya.hashnode.dev/easy-steps-to-sign-up-on-eden-ai-and-access-your-api-key" target="_blank">this informative article</a></li>
-        <li>If you run into any challenges, check out our detailed video guide on YouTube: <a href="https://www.youtube.com/watch?v=GXCeArGY6TI&ab_channel=Shishir" target="_blank">Watch the Guide</a></li>
-        </ol>
-          <p>Once you have your API key, enter it below:</p>
-        <input type="text" id="apiKeyInput" class="popup-option-input" autofocus>
-        <button id="submitApiKey" class="popup-option-btn">Submit</button>
-        </div>
+    <div class="popup-option">
+      <p>Follow these simple steps to get started:</p>
+      <ol style="text-align: left;">
+        <li class="popup-bullet-point-li">
+            Register on EdenAI by clicking 
+            <a href="https://app.edenai.run/admin/account/settings" alt="EdenAI register link"
+                target="_blank">Here
+            </a>
+        </li>
+        <li class="popup-bullet-point-li">
+            Obtain your Eden AI API Key by following the detailed steps provided in 
+            <a href="https://shishirchaurasiya.hashnode.dev/easy-steps-to-sign-up-on-eden-ai-and-access-your-api-key"
+                target="_blank">This Article
+            </a>
+        </li>
+        <li class="popup-bullet-point-li">
+            If you run into any challenges, check out our detailed video guide on YouTube: 
+            <a href="https://www.youtube.com/watch?v=GXCeArGY6TI&ab_channel=Shishir" target="_blank">
+            Watch The Guide
+            </a>
+        </li>
+      </ol>
+      <p>Once you have your API key, enter it below:</p>
+      <input type="text" id="apiKeyInput" class="popup-option-input" autofocus>
+      <button id="submitApiKey" class="popup-option-btn">Submit</button>
+    </div>
             `
             const optionPopup = document.querySelector('.popup-option-div');
             optionPopup.appendChild(optionDiv);
@@ -476,8 +588,10 @@ function getAndInjectSynopsis(synopsisApiKey) {
         })
         .catch((error) => {
           console.error(error);
-        });
+          summaryParagraph.textContent = "Sorry we encountered an error please try again";
+          generateBtn.classList.add('hide');
 
+        });
     })
   }
 

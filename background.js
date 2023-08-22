@@ -8,11 +8,11 @@ chrome.runtime.onInstalled.addListener(() => {
 
 const Udemy= 'https://www.udemy.com/course/';
 const Coursera= 'https://www.coursera.org/learn/'
-
+const Youtube='https://www.youtube.com/watch';
 
 // When the user clicks on the extension action
 chrome.action.onClicked.addListener(async (tab) => {
-  if (tab.url.startsWith(Udemy)||tab.url.startsWith(Coursera)) {
+  if (tab.url.startsWith(Udemy)||tab.url.startsWith(Coursera)||tab.url.startsWith(Youtube)) {
 
     const prevState = await chrome.action.getBadgeText({ tabId: tab.id });
   

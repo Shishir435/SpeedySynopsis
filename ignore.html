@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="popup">
+        <div class="popup-top">
+            <h2>Lecture Summary</h2>
+            <div class="action">
+                <button class="popup-reload hide btn" title="reload extension">&#8634;</button>
+                <button class="popup-copy hide btn" title="copy to clipboard">&#128203;</button>
+                <button class="popup-save hide btn" title="download text file">&#128190;</button>
+                <button class="popup-copied hide btn" title="copied">&#10003;</button>
+                <button class="popup-close btn" title="close extension">&#10006;</button>
+            </div>
+        </div>
+        <div class="popup-content">
+            <div class="popup-error"></div>
+            <div class="popup-instruction"></div>
+            <p class="popup-video-title"></p>
+            <div id="summary" class="summary">
+                <div class="summary-paragraph center">
+                    Discover handpicked summaries of Udemy and Coursera video tutorials. Enhance your learning with
+                    clear and concise insights.<br> <span style="display: block; text-align:center;"> Start exploring
+                        now.</span>
+                </div>
+            </div>
+            <div class="popup-option-div"></div>
+            <div class="popup-generate">
+                <button class="popup-generate-btn">Generate Summary</button>
+            </div>
+        </div>
+        <div class="popup-footer">
+            <div>
+                <a href="https://lecture-summary.vercel.app/" class="shishir" alt="Shishir's Website link"
+                    target="_blank">Need Help?</a>
+            </div>
+            <div>
+                <a href="mailto:shishirchaurasiya435@gmail.com" alt="contact me through mail"
+                    target="_blank">&#9993;</a>
+            </div>
+        </div>
+    </div>
+    <div class="popup-option">
+        <p>Welcome to the Lecture Summary Chrome Extension!</p>
+        <p>Follow these simple steps to get started:</p>
+        <ol style="text-align: left;">
+            <li class="popup-bullet-point-li">Register on EdenAI by clicking <a
+                    href="https://app.edenai.run/admin/account/settings" alt="EdenAI register link"
+                    target="_blank">here</a></li>
+            <li class="popup-bullet-point-li">Obtain your Eden AI API Key by following the detailed steps provided in <a
+                    href="https://shishirchaurasiya.hashnode.dev/easy-steps-to-sign-up-on-eden-ai-and-access-your-api-key"
+                    target="_blank">this article</a></li>
+            <li class="popup-bullet-point-li">If you run into any challenges, check out our detailed video guide on
+                YouTube: <a href="https://www.youtube.com/watch?v=GXCeArGY6TI&ab_channel=Shishir" target="_blank">Watch
+                    the Guide</a></li>
+        </ol>
+        <p>Once you have your API key, enter it below:</p>
+        <input type="text" id="apiKeyInput" class="popup-option-input" placeholder="Paste your API key here" autofocus>
+        <button id="submitApiKey" class="popup-option-btn">Submit</button>
+    </div>
+    <div class="popup-option">
+        <p>Follow these simple steps to get started:</p>
+        <ol>
+            <li class="popup-bullet-point-li">Register on EdenAI by clicking <a
+                    href="https://app.edenai.run/admin/account/settings" alt="EdenAI register link"
+                    target="_blank">here</a></li>
+            <li class="popup-bullet-point-li">Obtain your Eden AI API Key by following the detailed steps provided in <a
+                    href="https://shishirchaurasiya.hashnode.dev/easy-steps-to-sign-up-on-eden-ai-and-access-your-api-key"
+                    target="_blank">this informative article</a></li>
+            <li class="popup-bullet-point-li">If you run into any challenges, check out our detailed video guide on
+                YouTube: <a href="https://www.youtube.com/watch?v=GXCeArGY6TI&ab_channel=Shishir" target="_blank">Watch
+                    the Guide</a></li>
+        </ol>
+        <p>Once you have your API key, enter it below:</p>
+        <input type="text" id="apiKeyInput" class="popup-option-input" autofocus>
+        <button id="submitApiKey" class="popup-option-btn">Submit</button>
+    </div>
+</body>
+
+</html>
