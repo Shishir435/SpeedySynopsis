@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;600&display=swap");
+.popup {
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  z-index: 2147483647;
+  text-align: center;
+  width: 300px;
+  border-radius: 10px;
+  font-family: "Rubik", sans-serif;
+}
+.popup > * {
+  padding: 5px;
+}
+.popup-top,
+.popup-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #010101;
+  padding: 2px 8px;
+}
+.popup-top {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.popup-top h2 {
+  font-weight: 400;
+  font-size: 16px;
+}
+.popup-content::-webkit-scrollbar {
+  width: 5px;
+  height: 13px;
+}
+.popup-content {
+  padding: 8px;
+  max-height: 400px;
+  overflow-y: scroll;
+}
+.summary-paragraph {
+  text-align: left;
+  margin: 20px 0;
+  font-size: 13px;
+}
+.hide {
+  display: none;
+}
+.btn {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  color: currentColor;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 15px;
+}
+.popup-generate-btn,
+.popup-option-btn {
+  cursor: pointer;
+  margin: 20px;
+  border-radius: 999px;
+  padding: 5px 10px;
+  border: 2px solid currentColor;
+  color: currentColor;
+  background-color: transparent;
+  transition: transform 0.2s ease-in-out;
+}
+.popup-generate-btn:hover,
+.popup-option-btn:hover {
+  transform: translateY(-3px);
+  transform: scale(1.1);
+}
+
+.popup-reload {
+  font-size: 20px;
+}
+.action {
+  display: flex;
+  align-items: center;
+  transform: translateX(5px);
+}
+.action:not(:last-child) {
+  gap: 5px;
+}
+.popup-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding: 4px 8px;
+}
+.popup-footer a,
+.popup-footer a:visited {
+  color: currentColor;
+  text-decoration: none;
+}
+.popup-footer a:hover {
+  color: gray;
+}
+.shishir {
+  font-size: 13px;
+}
+.center {
+  text-align: center;
+}
+.popup-bullet-point-li {
+  margin-left: 20px;
+}
+
+.popup-bullet-point > * {
+  list-style-type: disc !important;
+}
+.popup-option {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.popup-option-input {
+  padding: 5px 10px;
+  margin: 5px 20px;
+  border-radius: 10px;
+}
